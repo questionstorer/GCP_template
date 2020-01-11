@@ -4,7 +4,6 @@ import logging
 import tensorflow as tf
 import sys
 import model
-import experiment
 import inputs
 
 def get_args():
