@@ -242,7 +242,7 @@ def main():
 
   # define callback
   tensorboard_cb = tf.keras.callbacks.TensorBoard(
-    "keras_tensorboard",
+    args.job_dir + "/keras_tensorboard",
     histogram_freq=1)
   # start training
   history = keras_model.fit(train_dataset,
@@ -252,8 +252,8 @@ def main():
                             callbacks=[tensorboard_cb],
                             verbose=1)
   # Export the model to a local SavedModel directory
-  keras_model.save("keras_model.h5")
-  print("Model exported to: ", "keras_model.h5")
+  keras_model.save(args.job_dir + "/keras_model.h5")
+  print("Model exported to: ", args.job_dir + "/keras_model.h5")
 
   time_end = datetime.utcnow()
   logging.info(".......................................")
