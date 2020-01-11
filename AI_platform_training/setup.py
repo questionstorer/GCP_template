@@ -2,7 +2,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 REQUIRED_PACKAGES = [
-    'tensorflow==1.15.0',
+    'tensorflow==2.1.0',
     'nltk==3.4.5'
 ]
 
