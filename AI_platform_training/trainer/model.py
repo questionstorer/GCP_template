@@ -13,7 +13,7 @@ def _corpus_generator(filename):
 def create_encoder(args):
     # create subword encoder
     encoder = tfds.features.text.SubwordTextEncoder.build_from_corpus(
-        _corpus_generator(), target_vocab_size=args.vocab_size)
+        _corpus_generator(args.textonly_file), target_vocab_size=args.vocab_size)
     return encoder
 
 def create_keras_model(args):

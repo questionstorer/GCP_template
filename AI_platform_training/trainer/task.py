@@ -21,7 +21,12 @@ def get_args():
     '--train-file',
     help='GCS or local paths to training data.',
     required=True
-  )
+  ),
+  args_parser.add_argument(
+    '--textonly-file',
+    help='GCS or local paths to text only data.',
+    required=True
+  ),
   args_parser.add_argument(
     '--eval-file',
     help='GCS or local paths to evaluation data.',
@@ -222,6 +227,9 @@ def main():
   logging.info("Training steps: {} ({}).".format(
     args.train_steps, "supplied" if args.train_size is None else "computed"))
   logging.info("Evaluate every {} steps.".format(args.eval_frequency_secs))
+
+  # download text only file
+  inputs.download(args.textonly_file)
 
   # Create the estimator
   encoder = model.create_encoder(args)
