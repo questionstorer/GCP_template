@@ -1,6 +1,4 @@
-import logging
 import tensorflow as tf
-import metadata
 import pandas as pd
 
 def download(filename):
