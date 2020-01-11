@@ -1,5 +1,5 @@
 trainingInput:
-  scaleTier: BASIC_GPU # BASIC | BASIC_GPU | STANDARD_1 | PREMIUM_1
+  scaleTier: BASIC # BASIC | BASIC_GPU | STANDARD_1 | PREMIUM_1
 ######### example of custom scale tier config ##############
 #  scaleTier: CUSTOM
 #  masterType: complex_model_m
