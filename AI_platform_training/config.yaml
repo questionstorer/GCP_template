@@ -1,5 +1,7 @@
 trainingInput:
   scaleTier: BASIC_GPU # BASIC | BASIC_GPU | STANDARD_1 | PREMIUM_1
+  pythonVersion: '3.7'
+  runtimeVersion: '1.14'
 ######### example of custom scale tier config ##############
 #  scaleTier: CUSTOM
 #  masterType: complex_model_m
