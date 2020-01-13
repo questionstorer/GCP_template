@@ -18,7 +18,7 @@ def create_encoder(args, textonly_file):
 
 def create_keras_model(args):
   # model contain four layers
-  hidden_units = [int(size) for size in args.hidden_units.split()]
+  hidden_units = [int(size) for size in args.hidden_units.split(",")]
 
   model = tf.keras.Sequential([
       tf.keras.layers.Embedding(args.vocab_size, hidden_units[0]),
