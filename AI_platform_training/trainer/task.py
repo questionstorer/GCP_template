@@ -226,10 +226,10 @@ def main():
   logging.info("Evaluate every {} steps.".format(args.eval_frequency_secs))
 
   # download text only file
-  inputs.download(args.textonly_file)
+  textonly_file = inputs.download(args.textonly_file)
 
   # Create the estimator
-  encoder = model.create_encoder(args)
+  encoder = model.create_encoder(args, textonly_file)
   keras_model = model.create_keras_model(args)
   logging.info("creating a keras model: {}".format(type(model)))
 
