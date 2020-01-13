@@ -10,6 +10,7 @@ def download(filename):
                 line += '\n'
                 file_write.write(line)
     return temp_filename
+
 def create_dataset(args, filename, encoder):
     df = pd.read_csv(filename)
     df["text"] = df["text"].apply(lambda text: encoder.encode(text))

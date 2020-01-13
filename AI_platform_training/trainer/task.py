@@ -240,6 +240,7 @@ def main():
 
   # download data file
   temp_train_filename = inputs.download(args.train_file)
+  logging.info(args.eval_file)
   temp_test_filename = inputs.download(args.eval_file)
   # generate dataset for input
   train_dataset = inputs.create_dataset(args, temp_train_filename, encoder)
