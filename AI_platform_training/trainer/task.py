@@ -29,7 +29,6 @@ def get_args():
   args_parser.add_argument(
     '--eval-file',
     help='GCS or local paths to evaluation data.',
-    nargs='+',
     required=True
   )
 
