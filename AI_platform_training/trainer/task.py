@@ -210,8 +210,6 @@ def main():
   else:
     logging.info("Reusing job_dir {} if it exists".format(args.job_dir))
 
-  run_config = experiment.create_run_config(args)
-  logging.info("Job directory:", run_config.model_dir)
 
   # Compute the number of training steps
   if args.train_size is not None and args.num_epochs is not None:
