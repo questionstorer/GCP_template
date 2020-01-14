@@ -5,7 +5,6 @@ import tensorflow as tf
 import sys
 import model
 import inputs
-tf.enable_eager_execution()
 
 def get_args():
   """Define the task arguments with the default values.
