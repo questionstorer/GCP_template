@@ -1,5 +1,4 @@
 from sklearn.externals import joblib
-import numpy as np
 import os
 
 class MyPredictor(object):
