@@ -17,8 +17,7 @@ class MyPredictor(object):
     model_path = os.path.join(model_dir, 'titanic.joblib')
     model = joblib.load(model_path)
 
-    encoder_path = os.path.join(model_dir, 'input_encoder.pkl')
-    with open(encoder_path, 'rb') as f:
-      encoder = joblib.load(encoder_path)
+    encoder_path = os.path.join(model_dir, 'input_encoder.joblib')
+    encoder = joblib.load(encoder_path)
 
     return cls(model, encoder)
