@@ -12,7 +12,7 @@ class MyPredictor(object):
     preprocessed_inputs = self._encoder.transform(instances)
 
 
-    return list(self._model.predict(preprocessed_inputs))
+    return ["survive" if _==1 else "die" for _ in list(self._model.predict(preprocessed_inputs))]
 
 
   @classmethod
