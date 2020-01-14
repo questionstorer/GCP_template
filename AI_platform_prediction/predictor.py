@@ -10,7 +10,11 @@ class MyPredictor(object):
   def predict(self, instances, **kwargs):
     inputs = np.asarray(instances)
     preprocessed_inputs = self._encoder.transform(inputs)
-    return self._model.predict(preprocessed_inputs)
+
+    try:
+      return self._model.predict(preprocessed_inputs)
+    except Exception as e:
+      return e
 
   @classmethod
   def from_path(cls, model_dir):
