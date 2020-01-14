@@ -8,8 +8,8 @@ class MyPredictor(object):
     self._encoder = encoder
 
   def predict(self, instances, **kwargs):
-    inputs = np.asarray(instances)
-    preprocessed_inputs = self._encoder.transform(inputs)
+
+    preprocessed_inputs = self._encoder.transform(instances)
 
     try:
       return self._model.predict(preprocessed_inputs)
