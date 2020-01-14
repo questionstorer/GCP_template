@@ -11,10 +11,9 @@ class MyPredictor(object):
 
     preprocessed_inputs = self._encoder.transform(instances)
 
-    try:
-      return self._model.predict(preprocessed_inputs)
-    except Exception as e:
-      return e
+
+    return list(self._model.predict(preprocessed_inputs))
+
 
   @classmethod
   def from_path(cls, model_dir):
