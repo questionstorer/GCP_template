@@ -1,0 +1,14 @@
+# submit training job
+gcloud ai-platform jobs submit training GCP_demo_14 \
+--job-dir gs://test_34336/GCP_demo \
+--package-path trainer \
+--module-name trainer.task \
+--region us-east1 \
+--config config.yaml \
+-- \ # now user specified arguments
+--num-epochs 20 \
+--batch-size 64 \
+--train-file gs://test_34336/train.csv \
+--eval-file gs://test_34336/test.csv \
+--textonly-file gs://test_34336/text_only.csv 
+
