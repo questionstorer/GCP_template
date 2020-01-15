@@ -1,6 +1,6 @@
 from setuptools import setup
 
 setup(
-    name='GCP_demo_prediction',
+    name='AI_platform_prediction',
     version='0.1',
-    scripts=['predictor.py']),
+    scripts=['predictor.py'])

@@ -16,10 +16,10 @@ class MyPredictor(object):
 
   @classmethod
   def from_path(cls, model_dir):
-    model_path = os.path.join(model_dir, 'titanic.joblib')
+    model_path = os.path.join(model_dir, 'titanic_model.joblib')
     model = joblib.load(model_path)
 
-    encoder_path = os.path.join(model_dir, 'input_encoder.joblib')
+    encoder_path = os.path.join(model_dir, 'titanic_encoder.joblib')
     encoder = joblib.load(encoder_path)
 
     return cls(model, encoder)

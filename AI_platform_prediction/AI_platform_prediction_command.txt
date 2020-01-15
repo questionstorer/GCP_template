@@ -9,6 +9,6 @@ gcloud beta ai-platform versions create GCP_demo_prediction_1 \
   --model titanic \
   --runtime-version 1.15 \
   --python-version 3.5 \
-  --origin gs://test_34336/titanic \
-  --package-uris gs://test_34336/titanic/GCP_demo_prediction-0.1.tar.gz \
+  --origin gs://test_34336/ \
+  --package-uris gs://test_34336/AI_platform_prediction-0.1.tar.gz \
   --prediction-class predictor.MyPredictor
