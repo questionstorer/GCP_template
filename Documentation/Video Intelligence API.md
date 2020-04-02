@@ -44,11 +44,13 @@ return response
 
 ## Deployment
 
-There are many ways to deploy an application using video intelligence. One can use run the code in compute engine, app engine or publish it as a cloud function. However one crucial step before one can use video intelligence API is the authentication. Video intelligence API does NOT support authenticating via user account. 
+There are many ways to deploy an application using video intelligence. One can run the code in compute engine, app engine or publish it as a cloud function. However one crucial step before one can use video intelligence API is the authentication. Video intelligence API does NOT support authenticating via user account. 
 
 When API is called from a compute engine or app engine, service account asscoiated to these instances will be automatically used to call the API so no further setup has to be done. If one is using Cloud function to call the API, then the service account can be set in creating the Cloud function and no further setup is needed.
 
 ## Debugging
+
+One can debug the written code that calls the video API in Cloud SDK or Cloud interactive shell. In this case, proper authentication must be applied before video API becomes accessible.
 
 *Authentication via a service account*
 
@@ -65,8 +67,6 @@ To authenticate via a service account in Cloud SDK, one can use the service acco
 - Set the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the key file
 
 - Call the api using packages in Cloud SDK
-
-
 
 ## Logging
 
@@ -99,5 +99,7 @@ To authenticate via a service account in Cloud SDK, one can use the service acco
 - Use video intelligence API as a Cloud Function
 
 - Use video intelligence API to process video in Compute Engine or App Engine
+
+- Analyze Accenture uploaded to MediaExchange and analyze video labels to enable better label classification for search engine.
 
 - 
