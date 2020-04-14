@@ -1,5 +1,19 @@
 # Video Intelligence API
 
+## Table of Content
+
+1. Usage
+
+2. Billing
+
+3. Code example
+
+4. Deployment
+
+5. Debugging
+
+6. Use Case
+
 ## Usage
 
 Features: 
@@ -28,9 +42,41 @@ Beta Features:
 
 - Live Stream video: Live Label Detection, Live Shot Change Detection, Live Explicit Content Detection, Live Object Detection and Tracking
 
+## Billing
+
+*Stored video annotation*
+
+| Feature                    | First 1000 minutes | Minutes 1000+                                          |
+| -------------------------- | ------------------ | ------------------------------------------------------ |
+| Label detection            | Free               | $0.10 / minute                                         |
+| Shot detection             | Free               | $0.05 / minute, or free with Label detection           |
+| Explicit content detection | Free               | $0.10 / minute                                         |
+| Speech transcription       | Free               | $0.048 / minute (charges for en-US transcription only) |
+| Object tracking            | Free               | $0.15 / minute                                         |
+| Text detection             | Free               | $0.15 / minute                                         |
+| Logo recognition           | Free               | $0.15 / minute                                         |
+| Celebrity recognition      | Free               | $0.10 / minute                                         |
+
+*Streaming video annotation*
+
+| Feature                    | First 1000 minutes | Minutes 1000+  |
+| -------------------------- | ------------------ | -------------- |
+| Label detection            | Free               | $0.12 / minute |
+| Shot detection             | Free               | $0.07 / minute |
+| Explicit content detection | Free               | $0.12 / minute |
+| Object Tracking            | Free               | $0.17 / minute |
+
 ### Code example
 
-*Python*
+*Python package installation*
+
+Python client for video API can be installed using `pip`.
+
+```shell
+pip install --upgrade google-cloud-videointelligence
+```
+
+*Label Detection example* 
 
 ```python
 from google.cloud import videointelligence
@@ -52,7 +98,7 @@ response = MessageToJson(annotation_result)
 return response
 ```
 
-### Response example
+*Response*
 
 ```json
 {
@@ -144,32 +190,6 @@ To authenticate via a service account in Cloud SDK, one can use the service acco
 - Set the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the key file
 
 - Call the api using packages in Cloud SDK
-
-## Logging
-
-## Billing
-
-*Stored video annotation*
-
-| Feature                    | First 1000 minutes | Minutes 1000+                                          |
-| -------------------------- | ------------------ | ------------------------------------------------------ |
-| Label detection            | Free               | $0.10 / minute                                         |
-| Shot detection             | Free               | $0.05 / minute, or free with Label detection           |
-| Explicit content detection | Free               | $0.10 / minute                                         |
-| Speech transcription       | Free               | $0.048 / minute (charges for en-US transcription only) |
-| Object tracking            | Free               | $0.15 / minute                                         |
-| Text detection             | Free               | $0.15 / minute                                         |
-| Logo recognition           | Free               | $0.15 / minute                                         |
-| Celebrity recognition      | Free               | $0.10 / minute                                         |
-
-*Streaming video annotation*
-
-| Feature                    | First 1000 minutes | Minutes 1000+  |
-| -------------------------- | ------------------ | -------------- |
-| Label detection            | Free               | $0.12 / minute |
-| Shot detection             | Free               | $0.07 / minute |
-| Explicit content detection | Free               | $0.12 / minute |
-| Object Tracking            | Free               | $0.17 / minute |
 
 ## Use cases
 
