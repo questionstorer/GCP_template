@@ -18,6 +18,16 @@ Features:
 
 - Automate video transcription for closed captioning and subtitles: Transcribe speech to text with punctuation. Refine results with alternatives provided for transcribed words or phrases. Censor profanities. Transcribe up to two audio tracks from multitrack video files. Currently supports English.
 
+Supported Video format
+
+The Video Intelligence API supports common video formats, including `.MOV`, `.MPEG4`, `.MP4`, `.AVI`, and the formats decodable by [ffmpeg](https://ffmpeg.org/) such as `FLV`, `MKV`.
+
+Beta Features:
+
+- Stream video: Label detection, Shot change detection, Explicit content detection, Explicit content detection, Object tracking. 
+
+- Live Stream video: Live Label Detection, Live Shot Change Detection, Live Explicit Content Detection, Live Object Detection and Tracking
+
 ### Code example
 
 *Python*
@@ -27,12 +37,12 @@ from google.cloud import videointelligence
 from google.protobuf.json_format import MessageToJson
 
 video_client = videointelligence.VideoIntelligenceServiceClient()
-# get features for text detection
-features = [videointelligence.enums.Feature.TEXT_DETECTION]
+# get features for label detection
+features = [videointelligence.enums.Feature.LABEL_DETECTION]
 
 operation = video_client.annotate_video(input_uri=input_uri, features=features)
 
-print("\nProcessing video for text detection.")
+print("\nProcessing video for label detection.")
 result = operation.result(timeout=3600)
 annotation_result = result.annotation_results[0]
 
@@ -41,6 +51,73 @@ response = MessageToJson(annotation_result)
 
 return response
 ```
+
+### Response example
+
+```json
+{
+  "@type":         "type.googleapis.com/google.cloud.videointelligence.v1.AnnotateVideoResponse",
+  "annotationResults": [
+    {
+      "inputUri": "/test_34336/video",
+      "segment": {
+          "inputUri": "/test_34336/video",
+          "segment": {
+              "segmentLabelAnnotations":[
+                  "categoryEntities": [
+                    {
+                      "description": "animal",
+                      "entityId": "/m/0jbk",
+                      "languageCode": "en-US"
+                    }
+                  ],
+                  "entity": {
+                    "description": "bird",
+                    "entityId": "/m/015p6",
+                    "languageCode": "en-US"
+                  },
+                  "segments": [
+                    {
+                      "confidence": 0.66169775,
+                      "segment": {
+                        "endTimeOffset": "200.366833s",
+                        "startTimeOffset": "0s"
+                      }
+                    }
+                  ]
+              ],
+              "shotLabelAnnotations": [
+               {
+                  "categoryEntities": [
+                    {
+                      "description": "geographical feature",
+                      "entityId": "/m/043rvww",
+                      "languageCode": "en-US"
+                    }
+                  ],
+                  "entity": {
+                    "description": "polar ice cap",
+                    "entityId": "/m/048nfp",
+                    "languageCode": "en-US"
+                  },
+                  "segments": [
+                    {
+                      "confidence": 0.53277606,
+                      "segment": {
+                        "endTimeOffset": "88.463375s",
+                        "startTimeOffset": "87.378958s"
+                      }
+                    }
+                  ]
+                }
+              ]
+          }
+      }
+  ]
+}
+```
+
+## 
 
 ## Deployment
 
