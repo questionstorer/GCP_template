@@ -66,8 +66,6 @@ To authenticate via a service account in Cloud SDK, one can use the service acco
 
 - Call the api using packages in Cloud SDK
 
-
-
 ## Logging
 
 ## Billing
