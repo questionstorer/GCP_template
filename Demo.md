@@ -1,3 +1,1 @@
-# Demo for analyze video, retrieve subtitle and read the subtitle from Youtube video
-
-
+# Demo for ingest video, analyze video for labels and output metadata of video to table.
