@@ -2,11 +2,14 @@
 import apache_beam as beam
 from google.cloud import videointelligence
 from google.cloud import language_v1
+from google.cloud.language_v1 import enums
 from google.protobuf.json_format import MessageToJson
 import argparse
 from apache_beam.options.pipeline_options import PipelineOptions
 import json
+import logging
 
+logging.basicConfig(level=logging.INFO)
 
 class VideoAnalyzer(beam.DoFn):
     def __init__(self):
@@ -16,10 +19,13 @@ class VideoAnalyzer(beam.DoFn):
         self.config = None
         self.video_context = None
     def parse_annotation(self, result):
-        alternatives = result.annotation_results[0]["speechTranscriptions"]
+        text = []
+        alternatives = result["annotationResults"][0]["speechTranscriptions"]
         for alternative in alternatives:
-            if "transcript" in alternative[0]:
-                return alternative[0]["transcript"]
+            if "transcript" in alternative["alternatives"][0]:
+                text.append(alternative["alternatives"][0]["transcript"])
+        
+        return "\n".join(text)
 		
 		
     def process(self, uri):
@@ -37,7 +43,7 @@ class VideoAnalyzer(beam.DoFn):
         result = json.loads(MessageToJson(operation.result(timeout=600)))
 		
         text = self.parse_annotation(result)
-        return (uri, text)
+        return [(uri, text)]
 
 class SentimentAnalyzer(beam.DoFn):
     def __init__(self):
@@ -56,11 +62,11 @@ class SentimentAnalyzer(beam.DoFn):
             self.encoding_type = enums.EncodingType.UTF8
 		
         document = {"content": text, "type": self.type_, "language": self.language}
-        response = client.analyze_sentiment(document, encoding_type=self.			encoding_type)
+        response = self.client.analyze_sentiment(document, encoding_type=self.			encoding_type)
 		
         result = json.loads(MessageToJson(response))
 		
-        return (uri, result["documentSentiment"]["score"])
+        return [(uri, result["documentSentiment"]["score"])]
 
 class prepare_write(beam.DoFn):
 	def process(self, input):
@@ -91,7 +97,9 @@ if __name__ == "__main__":
       help='Path to the exported video metadata')
 	  
     args, pipeline_args = parser.parse_known_args()
+    
     options = PipelineOptions(pipeline_args)
+
 
     run(args.input_path, args.output_path, options)
 	
