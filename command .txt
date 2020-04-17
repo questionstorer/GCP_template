@@ -1,0 +1,18 @@
+python3 video_analyzer.py \
+  --region asia-east1 \
+  --input-path gs://test_34336/video_list.txt \
+  --output-path gs://test_34336/video_metadata.txt \
+  --runner DataflowRunner \
+  --project my-project-34336 \
+  --staging_location gs://test_34336/binaries \
+  --temp_location gs://test_34336/tmp/  \
+  --save_main_session True
+  
+  
+python3 -m apache_beam.examples.wordcount\
+  --region asia-east1 \
+  --input gs://dataflow-samples/shakespeare/kinglear.txt \
+  --output gs://test_34336/wordcount/outputs \
+  --runner DataflowRunner \
+  --project my-project-34336 \
+  --temp_location gs://test_34336/tmp/

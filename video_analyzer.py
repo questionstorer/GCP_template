@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 
 class VideoAnalyzer(beam.DoFn):
     def __init__(self):
-        super(VideoAnalyzer, self).__init__()
+        beam.DoFn.__init__(self)
         self.video_client = None
         self.features = None
         self.config = None
@@ -47,7 +47,7 @@ class VideoAnalyzer(beam.DoFn):
 
 class SentimentAnalyzer(beam.DoFn):
     def __init__(self):
-        super(SentimentAnalyzer, self).__init__()
+        beam.DoFn.__init__(self)
         self.client = None
         self.type_ = None
         self.language = None
@@ -74,6 +74,7 @@ class prepare_write(beam.DoFn):
 		return uri + ";" + str(result)
 
 def run(input_path, output_path, options=None):
+
     with beam.Pipeline(options=options) as p:
         _ = (p
 			| 'get uris' >> beam.io.ReadFromText(input_path)
