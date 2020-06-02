@@ -71,10 +71,6 @@ with open('背影.mp3', 'wb') as out:
 
 ## Deployment
 
-
-
-
-
 ## Debugging
 
 One can debug the written code that calls the video API in Cloud SDK or Cloud interactive shell. In this case, proper authentication must be applied before video API becomes accessible.
@@ -94,8 +90,6 @@ To authenticate via a service account in Cloud SDK, one can use the service acco
 - Set the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the key file
 
 - Call the api using packages in Cloud SDK
-
-
 
 ## Use cases
 
